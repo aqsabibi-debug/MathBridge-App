@@ -332,8 +332,7 @@
             btn.classList.add('active-tab', 'bg-secondary-container', 'text-on-secondary-container');
             btn.classList.remove('hover:bg-surface-variant', 'text-on-surface-variant');
         }
-
-        function switchTab(tabId) {
+function switchTab(tabId) {
             const tabs = ['story', 'problem', 'explanation'];
             tabs.forEach(t => {
                 const btn = document.getElementById(`tab-${t}`);
@@ -345,8 +344,7 @@
                     btn.classList.remove('bg-secondary-container', 'text-on-secondary-container');
                 }
             });
-            
-            // Just a visual switch for the prototype demo
+                // Just a visual switch for the prototype demo
             const content = document.getElementById('result-content');
             content.style.opacity = '0';
             setTimeout(() => {
@@ -376,8 +374,7 @@ async function generateMathProblem(topic, interest) {
 async function generateMathProblem(topic, interest) {
   try {
     const apiKey = "gsk_v7Wvy917dmoKnzYkMapBWGdyb3FYJffPrk+5a7FFBv9ZEJJelmvi";
-
-    const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
+ const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
       method: "POST",
       headers: {
         "Authorization": `Bearer ${apiKey}`,
@@ -395,41 +392,33 @@ async function generateMathProblem(topic, interest) {
     });
 
     const data = await response.json();
-    
     if (data.error) {
       console.error("Groq API Error:", data.error);
       alert("API Error: " + data.error.message);
       return;
     }
-
-    const aiText = data.choices[0].message.content;
+const aiText = data.choices[0].message.content;
     console.log("Generated Problem:", aiText);
-
-    const storyBox = document.getElementById('storyText');
+const storyBox = document.getElementById('storyText');
     if (storyBox) {
       storyBox.innerText = aiText;
     } else {
       alert("✨ AI Result:\n\n" + aiText);
     }
-
-  } catch (error) {
+ } catch (error) {
     console.error("Fetch Error:", error);
     alert("Connection Error: " + error.message);
   }
 }
-
-const btn = document.getElementById("generateBtn");
+        const btn = document.getElementById("generateBtn");
 if (btn) {
   btn.addEventListener("click", async (e) => {
     e.preventDefault();
-    
-    const topicInput = document.querySelector('input[placeholder*="Topic"]') || document.querySelectorAll('input')[0];
+     const topicInput = document.querySelector('input[placeholder*="Topic"]') || document.querySelectorAll('input')[0];
     const interestInput = document.querySelectorAll('input')[1];
-    
-    const topic = (topicInput && topicInput.value) ? topicInput.value : "Algebra";
+     const topic = (topicInput && topicInput.value) ? topicInput.value : "Algebra";
     const interest = (interestInput && interestInput.value) ? interestInput.value : "Gaming";
-
-    await generateMathProblem(topic, interest);
+ await generateMathProblem(topic, interest);
   });
 }
 </script>

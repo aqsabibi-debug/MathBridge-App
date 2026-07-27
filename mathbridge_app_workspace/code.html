@@ -369,4 +369,30 @@
             }
         }
     </script>
+<script type="importmap">
+  {
+    "imports": {
+      "@google/genai": "https://esm.run/@google/genai"
+    }
+  }
+</script>
+<script type="module">
+  import { GoogleGenAI } from "@google/genai";
+
+  // Upar copy ki hui API Key yahan quotes ke andar paste karein
+  const apiKey = "AQ.Ab8RN6JzAPW09IUaFY1ObGVsQ0xCRHoZF491DxNHPbv2cDrUmA"; 
+  const ai = new GoogleGenAI({ apiKey: apiKey });
+
+  async function generateMathProblem(topic, interest) {
+    try {
+      const response = await ai.models.generateContent({
+        model: 'gemini-2.5-flash',
+        contents: `Create an engaging real-world math problem connecting ${topic} to ${interest}. Include step-by-step guidance.`
+      });
+      console.log(response.text);
+    } catch (error) {
+      console.error("API Error:", error);
+    }
+  }
+</script>
 </body></html>

@@ -395,4 +395,13 @@
     }
   }
 </script>
+ // Ensure button triggers action
+const generateBtn = document.querySelector('button:has(svg)') || document.querySelector('.bg-indigo-600') || document.querySelector('button');
+if (generateBtn) {
+  generateBtn.addEventListener('click', async (e) => {
+    e.preventDefault();
+    console.log("Button Clicked Successfully!");
+      // Yahan aapka Gemini generation logic call hoga
+  });
+}       
 </body></html>

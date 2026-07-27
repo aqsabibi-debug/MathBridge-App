@@ -209,7 +209,7 @@
 </div>
 </div>
 <div class="mt-lg flex justify-end">
-<button class="bg-primary-container text-on-primary-container hover:opacity-90 px-xl py-md rounded-full font-label-md flex items-center gap-sm transition-all shadow-md active:scale-[0.98]">
+<button id="generateBtn" class="bg-primary-container text-on-primary-container hover:opacity-90 px-xl py-md rounded-full font-label-md flex items-center gap-sm transition-all shadow-md active:scale-[0.98]">
 <span class="material-symbols-outlined">auto_awesome</span>
                             Generate Experience
                         </button>
@@ -380,7 +380,7 @@
   import { GoogleGenAI } from "@google/genai";
 
   // Upar copy ki hui API Key yahan quotes ke andar paste karein
-  const apiKey = "AQ.Ab8RN6JzAPW09IUaFY1ObGVsQ0xCRHoZF491DxNHPbv2cDrUmA"; 
+  const apiKey = "process.env.GEMINI_API_KEY;"; 
   const ai = new GoogleGenAI({ apiKey: apiKey });
 
   async function generateMathProblem(topic, interest) {
@@ -394,14 +394,21 @@
       console.error("API Error:", error);
     }
   }
-</script>
- // Ensure button triggers action
-const generateBtn = document.querySelector('button:has(svg)') || document.querySelector('.bg-indigo-600') || document.querySelector('button');
-if (generateBtn) {
-  generateBtn.addEventListener('click', async (e) => {
+  // Button Event Listener
+const btn = document.getElementById('generateBtn');
+if (btn) {
+  btn.addEventListener('click', async (e) => {
     e.preventDefault();
-    console.log("Button Clicked Successfully!");
-      // Yahan aapka Gemini generation logic call hoga
+    
+    const topicInput = document.querySelector('input[placeholder*="topic"]') || document.querySelector('input');
+    const interestInput = document.querySelectorAll('input')[1];
+
+    const topic = topicInput ? topicInput.value : "Algebra";
+    const interest = interestInput ? interestInput.value : "Gaming";
+
+    alert("✨ MathBridge AI Magic Starting...");
+    await generateMathProblem(topic, interest);
   });
-}       
+} 
+</script>       
 </body></html>

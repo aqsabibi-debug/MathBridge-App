@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MathBridge | Connect Math to Your Passion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Config Verbatim -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#57657a",
+                    "surface-tint": "#4d44e3",
+                    "on-secondary-fixed-variant": "#3a485b",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "primary-fixed": "#e2dfff",
+                    "inverse-on-surface": "#f3effc",
+                    "surface-variant": "#e4e1ee",
+                    "primary": "#3525cd",
+                    "surface": "#fcf8ff",
+                    "on-primary-container": "#dad7ff",
+                    "primary-container": "#4f46e5",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#d5e3fc",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "outline": "#777587",
+                    "surface-container-highest": "#e4e1ee",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#0d1c2e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#0f0069",
+                    "secondary-fixed-dim": "#b9c7df",
+                    "inverse-primary": "#c3c0ff",
+                    "surface-container": "#f0ecf9",
+                    "surface-bright": "#fcf8ff",
+                    "surface-container-high": "#eae6f4",
+                    "on-error": "#ffffff",
+                    "tertiary": "#7e3000",
+                    "tertiary-fixed": "#ffdbcc",
+                    "inverse-surface": "#302f39",
+                    "outline-variant": "#c7c4d8",
+                    "secondary-fixed": "#d5e3fc",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "surface-dim": "#dcd8e5",
+                    "on-tertiary-container": "#ffd2be",
+                    "on-surface": "#1b1b24",
+                    "on-background": "#1b1b24",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#a44100",
+                    "secondary": "#515f74",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "on-tertiary-fixed": "#351000",
+                    "background": "#fcf8ff",
+                    "surface-container-low": "#f5f2ff",
+                    "on-surface-variant": "#464555"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "base": "4px",
+                    "lg": "24px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "3xl": "64px",
+                    "xl": "32px",
+                    "max-width": "1280px",
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "2xl": "48px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC; /* Level 0 background from style guidance */
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #E2E8F0;
+        }
+        .custom-shadow {
+            shadow: 0px 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+        .hover-lift {
+            transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-4px);
+            box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .grid-asymmetric {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 24px;
+        }
+        @media (max-width: 768px) {
+            .grid-asymmetric {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface shadow-sm h-20">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-max-width mx-auto h-full">
+<div class="flex items-center gap-sm">
+<img alt="MathBridge Logo" class="h-10 w-auto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYQum75t_gxFQVo1AdXE4IyZNbS4IHY_3IjW3Oc6m97NhxBNote7Sw7WaFpQonhDiqw-IuYcLvCf7GVRJ0E0H5CN-2Ye5dKMQhmRsLIdlpu5CA-AHBYn5FYrsVA-3MyBet6YzlFXbu3maQx4GdEEylqrgzdJ9XLhU69jw4V0Akm2EBYhYlG0zVGsBT6BxFxe_cXhzdvj0xnroHuOWCRg_oPdjU7NGsFaz6WrQHN0c1vVxlwFaDWJ1P3fNMzxK2YWA6lpjhjS_IONI"/>
+<span class="text-headline-md font-headline-md font-bold text-primary">MathBridge</span>
+</div>
+<nav class="hidden md:flex items-center gap-xl">
+<a class="font-label-md text-label-md text-primary border-b-2 border-primary pb-1" href="#">Home</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Workspace</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Dashboard</a>
+</nav>
+<div class="flex items-center">
+<button class="bg-primary text-on-primary px-lg py-sm rounded-full font-label-md text-label-md hover:opacity-90 transition-opacity">
+                    Launch App
+                </button>
+</div>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative overflow-hidden py-3xl px-margin-mobile md:px-margin-desktop">
+<div class="absolute inset-0 z-0 opacity-10">
+
+</div>
+<div class="max-w-max-width mx-auto grid md:grid-cols-2 gap-2xl items-center relative z-10">
+<div class="space-y-xl">
+<span class="inline-block bg-secondary-container text-on-secondary-container px-md py-xs rounded-full font-label-sm text-label-sm">
+                        AI-POWERED LEARNING
+                    </span>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tight">
+                        Stop Asking <br/><span class="text-primary italic">"When Will I Use This?"</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">
+                        Connect complex math concepts to your real-world hobbies. Our Socratic AI turns abstract equations into the secret sauce behind your favorite passions.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-md">
+<button class="bg-primary text-on-primary px-2xl py-md rounded-full font-label-md text-label-md shadow-lg hover-lift">
+                            Try MathBridge Free
+                        </button>
+<button class="border border-outline text-primary px-2xl py-md rounded-full font-label-md text-label-md flex items-center justify-center gap-sm hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined">play_circle</span>
+                            Watch Demo
+                        </button>
+</div>
+</div>
+<div class="relative">
+<div class="rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white rotate-2 hover:rotate-0 transition-transform duration-500">
+<img class="w-full h-auto" data-alt="A clean, minimalist UI interface of a math learning application displayed on a sleek tablet. The screen shows a vibrant basketball court graphic overlaid with parabolic math trajectories and geometric calculations. The background is a soft, professional studio lighting environment with subtle indigo and slate accents that match a modern academic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlJcrMzNFAw22tUEvvapVIYtWVQNT1Ukegdo5zKCOR9yrPv-s7UggY6vBO1J44AnZjS4NqAqTmyHkHYq_ECvsqJEUtjA5d2fPWgshVTRQNNUFJTRTlH1xv-Or4pBVVK_-rw-5AWkKUEajrWm3rKP1lwBLC_hxZJxyt_F3Libl-7VVFa3MjS2ccKeBV0ReUBySYJ_8HCNrI8WB1_--pydt_NXUzHU-htdqc1mSU7Ik-45ABa7MXq_-vgKOSWQGSlDCHYt-OVAzyXHQ"/>
+</div>
+<!-- Floating Badge -->
+<div class="absolute -bottom-6 -left-6 glass-card p-md rounded-xl shadow-xl animate-bounce">
+<div class="flex items-center gap-sm">
+<div class="bg-primary-container p-sm rounded-lg text-on-primary-container">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Socratic Coach</p>
+<p class="font-label-md text-label-md font-bold">"Think about the arc..."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Bento Grid -->
+<section class="py-3xl bg-surface-container-low px-margin-mobile md:px-margin-desktop">
+<div class="max-w-max-width mx-auto">
+<div class="text-center mb-2xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-sm">Built for Structured Curiosity</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Three pillars to bridge the gap between classroom and reality.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Feature 1 -->
+<div class="bg-white p-lg rounded-[1.5rem] border border-outline-variant hover-lift flex flex-col h-full">
+<div class="bg-secondary-container w-12 h-12 rounded-xl flex items-center justify-center text-primary mb-md">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm">Personalized to Passions</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow">
+                            Input your hobbies—from gaming to baking—and see calculus come to life through the lens of what you love.
+                        </p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-white p-lg rounded-[1.5rem] border border-outline-variant hover-lift flex flex-col h-full">
+<div class="bg-secondary-container w-12 h-12 rounded-xl flex items-center justify-center text-primary mb-md">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm">Socratic AI Coaching</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow">
+                            Our AI doesn't just give answers; it asks the right questions to guide you toward your own "Aha!" moment.
+                        </p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-white p-lg rounded-[1.5rem] border border-outline-variant hover-lift flex flex-col h-full">
+<div class="bg-secondary-container w-12 h-12 rounded-xl flex items-center justify-center text-primary mb-md">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-sm">Saved Progress</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow">
+                            Build your personal knowledge graph. Watch your mastery of concepts grow across different real-world applications.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Teaser -->
+<section class="py-3xl px-margin-mobile md:px-margin-desktop bg-surface">
+<div class="max-w-max-width mx-auto">
+<div class="grid-asymmetric items-center">
+<div class="relative h-[400px] rounded-[2rem] overflow-hidden shadow-xl">
+<div class="w-full h-full bg-cover bg-center" data-alt="A high-action, professional sports photograph of a basketball player in mid-air performing a jump shot. Superimposed over the image is a vibrant neon blue parabola illustrating the mathematical trajectory of the ball. The aesthetic is clean and high-contrast, blending physics diagrams with energetic sports photography in an indigo and white color scheme." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDf_F9l8-exqGl7HdkRcGpF8NUTg0F3Y7slUueqo8YLEVu3KPLMMRVbUyirSoCRorlulIq_1yiW2bHzXs-kdAOYKRLBdOu4SvHvHw42tRR043f1nmHS6n1n2J0thUxuwtujtdhpCBVgEc420IG7z2VPhJd5MmL0ZDNrX_j4Njzy5AE4KDyMGMP1KZ7Z-tfZZmpvklQ381jy7IyqNCqWqnwteBqtkQyQUrJRDSovQUCT-E63F5hCfpaB_1mSHu8c0_TY-8_iHWkUmRQ')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-lg left-lg right-lg text-white">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-primary-fixed">functions</span>
+<span class="font-label-md text-label-md uppercase tracking-wider">Physics of Motion</span>
+</div>
+<h4 class="font-headline-lg text-headline-lg">Quadratic Equations + Basketball = Calculating Trajectory</h4>
+</div>
+</div>
+<div class="bg-surface-container p-xl rounded-[2rem] border border-outline-variant flex flex-col justify-center gap-lg">
+<div class="space-y-sm">
+<h3 class="font-headline-md text-headline-md text-primary">Bridge the Gap</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                                Curate your learning journey. Instead of solving for 'x' in a vacuum, solve for the optimal release angle of a free throw or the reverb timing in your favorite track.
+                            </p>
+</div>
+<div class="p-md bg-white rounded-xl shadow-sm space-y-md">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface">Mastery Level</span>
+<span class="font-label-md text-label-md text-primary font-bold">78%</span>
+</div>
+<div class="w-full h-3 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-1000" style="width: 78%"></div>
+</div>
+<div class="flex gap-sm">
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full text-[10px] font-bold">QUADRATICS</span>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-xs rounded-full text-[10px] font-bold">ANGULAR MOTION</span>
+</div>
+</div>
+<button class="text-primary font-label-md text-label-md flex items-center gap-xs hover:gap-sm transition-all">
+                            Explore more passion projects <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-3xl px-margin-mobile md:px-margin-desktop">
+<div class="max-w-max-width mx-auto bg-primary rounded-[3rem] p-2xl text-center text-on-primary overflow-hidden relative">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+
+</div>
+<div class="relative z-10 space-y-xl max-w-2xl mx-auto">
+<h2 class="font-display-lg text-display-lg">Ready to make math <br/>mean something?</h2>
+<p class="font-body-lg text-body-lg text-primary-fixed-dim">Join thousands of students and teachers who are redefining the classroom experience.</p>
+<div class="pt-md">
+<button class="bg-white text-primary px-3xl py-md rounded-full font-label-md text-label-md shadow-xl hover-lift">
+                            Create Free Account
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low w-full py-2xl px-margin-desktop max-w-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="flex flex-col gap-sm items-center md:items-start">
+<div class="flex items-center gap-sm">
+<img alt="MathBridge Logo" class="h-8 w-auto grayscale opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYQum75t_gxFQVo1AdXE4IyZNbS4IHY_3IjW3Oc6m97NhxBNote7Sw7WaFpQonhDiqw-IuYcLvCf7GVRJ0E0H5CN-2Ye5dKMQhmRsLIdlpu5CA-AHBYn5FYrsVA-3MyBet6YzlFXbu3maQx4GdEEylqrgzdJ9XLhU69jw4V0Akm2EBYhYlG0zVGsBT6BxFxe_cXhzdvj0xnroHuOWCRg_oPdjU7NGsFaz6WrQHN0c1vVxlwFaDWJ1P3fNMzxK2YWA6lpjhjS_IONI"/>
+<span class="font-headline-md text-headline-md font-bold text-primary">MathBridge</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">© 2024 MathBridge. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-xl">
+<a class="font-label-sm text-label-sm text-on-secondary-container hover:underline decoration-primary transition-all" href="#">Teacher Resources</a>
+<a class="font-label-sm text-label-sm text-on-secondary-container hover:underline decoration-primary transition-all" href="#">Project Info</a>
+<a class="font-label-sm text-label-sm text-on-secondary-container hover:underline decoration-primary transition-all" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-on-secondary-container hover:underline decoration-primary transition-all" href="#">Contact</a>
+</div>
+<div class="flex gap-md">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">mail</span>
+</a>
+</div>
+</footer>
+<script>
+        // Simple scroll effect for navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('header');
+            if (window.scrollY > 20) {
+                nav.classList.add('bg-white/95', 'backdrop-blur-md');
+            } else {
+                nav.classList.remove('bg-white/95', 'backdrop-blur-md');
+            }
+        });
+
+        // Interactive hover effects for cards
+        document.querySelectorAll('.hover-lift').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = 'var(--primary)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = '#E2E8F0';
+            });
+        });
+    </script>
+</body></html>

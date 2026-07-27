@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MathBridge Dashboard | My Saved Connections</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#57657a",
+                    "surface-tint": "#4d44e3",
+                    "on-secondary-fixed-variant": "#3a485b",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "primary-fixed": "#e2dfff",
+                    "inverse-on-surface": "#f3effc",
+                    "surface-variant": "#e4e1ee",
+                    "primary": "#3525cd",
+                    "surface": "#fcf8ff",
+                    "on-primary-container": "#dad7ff",
+                    "primary-container": "#4f46e5",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#d5e3fc",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "outline": "#777587",
+                    "surface-container-highest": "#e4e1ee",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#0d1c2e",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#0f0069",
+                    "secondary-fixed-dim": "#b9c7df",
+                    "inverse-primary": "#c3c0ff",
+                    "surface-container": "#f0ecf9",
+                    "surface-bright": "#fcf8ff",
+                    "surface-container-high": "#eae6f4",
+                    "on-error": "#ffffff",
+                    "tertiary": "#7e3000",
+                    "tertiary-fixed": "#ffdbcc",
+                    "inverse-surface": "#302f39",
+                    "outline-variant": "#c7c4d8",
+                    "secondary-fixed": "#d5e3fc",
+                    "tertiary-fixed-dim": "#ffb695",
+                    "surface-dim": "#dcd8e5",
+                    "on-tertiary-container": "#ffd2be",
+                    "on-surface": "#1b1b24",
+                    "on-background": "#1b1b24",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#a44100",
+                    "secondary": "#515f74",
+                    "on-tertiary-fixed-variant": "#7b2f00",
+                    "on-tertiary-fixed": "#351000",
+                    "background": "#fcf8ff",
+                    "surface-container-low": "#f5f2ff",
+                    "on-surface-variant": "#464555"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.5rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-desktop": "40px",
+                    "base": "4px",
+                    "lg": "24px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "3xl": "64px",
+                    "xl": "32px",
+                    "max-width": "1280px",
+                    "xs": "4px",
+                    "gutter": "24px",
+                    "2xl": "48px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "display-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+            border: 1px solid #E2E8F0;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface shadow-sm h-20 sticky top-0 z-50 transition-opacity">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-max-width mx-auto h-full">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-headline-md" style="font-variation-settings: 'FILL' 1;">functions</span>
+<span class="text-headline-md font-headline-md font-bold text-primary">MathBridge</span>
+</div>
+<nav class="hidden md:flex items-center gap-xl">
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-on-surface-variant font-label-md text-label-md hover:text-primary transition-colors" href="#">Workspace</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-label-md text-label-md opacity-80" href="#">Dashboard</a>
+</nav>
+<button class="bg-primary-container text-on-primary font-label-md text-label-md px-lg py-sm rounded-full hover:shadow-lg transition-all active:scale-95">
+                Launch App
+            </button>
+</div>
+</header>
+<div class="flex flex-1 max-w-max-width mx-auto w-full px-margin-desktop py-xl gap-xl">
+<!-- NavigationDrawer (Sidenav) -->
+<aside class="hidden md:flex flex-col w-64 shrink-0 py-md">
+<div class="space-y-sm">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-variant rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">edit_square</span>
+<span class="font-label-md text-label-md">Workspace</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container rounded-full scale-[0.98] transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">leaderboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+</div>
+<!-- Analytics Widget -->
+<div class="mt-xl p-lg bg-surface-container-high rounded-2xl border border-outline-variant/30">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-md uppercase tracking-wider">Learning Stats</h3>
+<div class="space-y-lg">
+<div class="flex flex-col">
+<span class="text-headline-md font-bold text-primary">12</span>
+<span class="text-label-sm text-on-surface-variant">Connections Created</span>
+</div>
+<div class="space-y-xs">
+<div class="flex justify-between text-label-sm">
+<span>Level Progress</span>
+<span class="text-primary font-bold">75%</span>
+</div>
+<div class="w-full bg-outline-variant h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<div class="flex items-center gap-sm p-sm bg-primary/5 rounded-xl border border-primary/10">
+<span class="material-symbols-outlined text-primary text-[18px]">local_fire_department</span>
+<span class="text-label-sm text-on-surface">4 Day Streak!</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 space-y-xl">
+<!-- Header & Filter Section -->
+<section class="space-y-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">My Saved Connections & History</h1>
+<p class="text-body-md text-on-surface-variant mt-xs">Revisit your bridging concepts and track your academic journey.</p>
+</div>
+<div class="flex items-center gap-sm">
+<span class="text-label-md text-on-secondary-container">Sorted by:</span>
+<button class="flex items-center gap-xs font-label-md text-label-md text-primary bg-white px-md py-sm rounded-full border border-outline-variant hover:bg-surface-container-low transition-colors">
+                            Recent <span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Bento-style Filter & Search -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-md items-center">
+<div class="md:col-span-2 relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-xl pr-md py-md bg-surface-container-low border-none rounded-xl focus:ring-2 focus:ring-primary font-body-md text-body-md" placeholder="Search your archive..." type="text"/>
+</div>
+<div class="md:col-span-2 flex flex-wrap gap-sm">
+<button class="bg-primary-container/10 text-primary px-lg py-sm rounded-full font-label-md text-label-md border border-primary/20 hover:bg-primary-container/20 transition-colors flex items-center gap-xs">
+                            #Algebra <span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+<button class="bg-on-secondary-container/10 text-on-secondary-container px-lg py-sm rounded-full font-label-md text-label-md border border-outline-variant hover:bg-on-secondary-container/20 transition-colors flex items-center gap-xs">
+                            #Gaming <span class="material-symbols-outlined text-[14px]">close</span>
+</button>
+<button class="bg-surface-container-highest px-md py-sm rounded-full font-label-md text-label-md text-on-surface-variant hover:bg-outline-variant transition-colors">
+                            + Add Filter
+                        </button>
+</div>
+</div>
+</section>
+<!-- Card Grid -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+<!-- Card 1 -->
+<article class="bg-white rounded-2xl border border-outline-variant hover:shadow-lg transition-all group overflow-hidden flex flex-col">
+<div class="h-48 w-full relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="A cinematic, high-definition digital render showing a 3D grid of matrices and mathematical vectors overlaying a vibrant cyberpunk city landscape. Neon indigo and electric violet lights illuminate the scene, creating a sense of advanced technology. The style is modern and minimalist, featuring clean lines and a soft, professional depth-of-field. The lighting is balanced and crisp, evoking academic confidence and creative exploration." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB3YJpi9oCUT0AAQSQnC-cqiyrdnphytBBp3dnIVLo-bfO0rsCGrCUqVEY1sIca8mQC_pPESoBIh7wPo8R4YlJSufzOeDb9eQFMsxRQAPd2HsYX3TF-z2-pZoXpSBta2zyyam_G6UH6QB8Ntp0w0xMK6GmsNzd_46XuE9AJyhIoWtLZl_rEzbBfpImNWv7zL2MLnyrFfJRECaxZfxm3cc3Hrpuq7QQGtQ6wGKQc9WzosNWop0TgcROZbqrkHMHliPC4gfCY__eGgd0')"></div>
+<div class="absolute top-md right-md bg-white/90 backdrop-blur-md px-md py-xs rounded-full flex items-center gap-xs text-label-sm font-bold text-primary shadow-sm">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                            Featured
+                        </div>
+</div>
+<div class="p-lg flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Matrices in Game Graphics</h2>
+<span class="text-label-sm text-outline-variant">Jan 12, 2024</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-lg line-clamp-2">Explored how linear transformations and matrix multiplication power real-time rendering in modern game engines like Unreal.</p>
+<div class="mt-auto pt-md flex items-center justify-between border-t border-outline-variant/30">
+<div class="flex gap-xs">
+<button class="flex items-center gap-xs px-md py-sm rounded-lg text-primary hover:bg-primary/5 font-label-md text-label-md transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+                                    Revisit
+                                </button>
+<button class="p-sm rounded-lg text-on-secondary-container hover:bg-secondary-container/30 transition-all" title="Share">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+<button class="p-sm rounded-lg text-error hover:bg-error/10 transition-all" title="Delete">
+<span class="material-symbols-outlined text-[20px]">delete_outline</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="bg-white rounded-2xl border border-outline-variant hover:shadow-lg transition-all group overflow-hidden flex flex-col">
+<div class="h-48 w-full relative overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="An artistic representation of calculus derivatives visualized through the fluid, curving lines of a high-speed sports car body and its aerodynamic wind tunnel simulations. The color palette consists of deep slate and indigo tones with soft white highlights. The environment is a clean, scientific workspace with a minimalist aesthetic and professional lighting that emphasizes the sleek, mathematical precision of the design." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDgYbMHdPWLEYgZIqr6-kCQnDQHzPX04rqVQg7sJHXoi_14GqUGaon4_xCmAr8xma8Lp8AjswxrYbFKF6pq9TIatfrxdir15s98GPbkqylPkPIrWgXJrHXyU6P6ED4rTBJhWHav5GcHJ286oOrL6BA7MKH4k4X4-fTspkLiwJ-OnffrHGvFGSwlpc_AotNm-e4P84Oc68kilmdRnSAqEn3DVz_OAAP01aAtPb6S-Qb_IZ1MHojs6neg4bk3OxQH1vFmi6Y-mQ89DtY')"></div>
+<div class="absolute top-md right-md bg-white/90 backdrop-blur-md px-md py-xs rounded-full flex items-center gap-xs text-label-sm font-bold text-on-secondary-container shadow-sm">
+<span class="material-symbols-outlined text-[14px]">history</span>
+                            Recent
+                        </div>
+</div>
+<div class="p-lg flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">Calculus in Aerodynamics</h2>
+<span class="text-label-sm text-outline-variant">Jan 10, 2024</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-lg line-clamp-2">Calculated rate of change in airflow pressure to understand drag coefficients in high-speed vehicle design.</p>
+<div class="mt-auto pt-md flex items-center justify-between border-t border-outline-variant/30">
+<div class="flex gap-xs">
+<button class="flex items-center gap-xs px-md py-sm rounded-lg text-primary hover:bg-primary/5 font-label-md text-label-md transition-all">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+                                    Revisit
+                                </button>
+<button class="p-sm rounded-lg text-on-secondary-container hover:bg-secondary-container/30 transition-all" title="Share">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+<button class="p-sm rounded-lg text-error hover:bg-error/10 transition-all" title="Delete">
+<span class="material-symbols-outlined text-[20px]">delete_outline</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Empty State Card (Placeholder for creation) -->
+<button class="group border-2 border-dashed border-outline-variant hover:border-primary hover:bg-primary/5 rounded-2xl flex flex-col items-center justify-center p-2xl transition-all h-full min-h-[300px]">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</div>
+<span class="font-headline-md text-headline-md text-on-surface-variant">Create New Connection</span>
+<span class="font-label-md text-label-md text-outline mt-xs">Bridge math to your interests</span>
+</button>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-low mt-3xl">
+<div class="w-full py-2xl px-margin-desktop max-w-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-headline-md">functions</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">MathBridge</span>
+</div>
+<div class="flex flex-wrap justify-center gap-xl">
+<a class="text-on-secondary-container font-label-sm text-label-sm hover:underline decoration-primary transition-colors" href="#">Teacher Resources</a>
+<a class="text-on-secondary-container font-label-sm text-label-sm hover:underline decoration-primary transition-colors" href="#">Project Info</a>
+<a class="text-on-secondary-container font-label-sm text-label-sm hover:underline decoration-primary transition-colors" href="#">Privacy Policy</a>
+<a class="text-on-secondary-container font-label-sm text-label-sm hover:underline decoration-primary transition-colors" href="#">Contact</a>
+</div>
+<p class="text-on-secondary-container font-body-md text-body-md opacity-60">
+                © 2024 MathBridge. All rights reserved.
+            </p>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for active states
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => el.classList.add('scale-[0.98]'));
+            el.addEventListener('mouseup', () => el.classList.remove('scale-[0.98]'));
+            el.addEventListener('mouseleave', () => el.classList.remove('scale-[0.98]'));
+        });
+
+        // Search bar focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('ring-2', 'ring-primary/20');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('ring-2', 'ring-primary/20');
+        });
+    </script>
+</body></html>

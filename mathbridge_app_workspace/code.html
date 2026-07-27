@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MathBridge | Interactive Workspace</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#57657a",
+                        "surface-tint": "#4d44e3",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "primary-fixed": "#e2dfff",
+                        "inverse-on-surface": "#f3effc",
+                        "surface-variant": "#e4e1ee",
+                        "primary": "#3525cd",
+                        "surface": "#fcf8ff",
+                        "on-primary-container": "#dad7ff",
+                        "primary-container": "#4f46e5",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#d5e3fc",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "outline": "#777587",
+                        "surface-container-highest": "#e4e1ee",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed": "#0f0069",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "inverse-primary": "#c3c0ff",
+                        "surface-container": "#f0ecf9",
+                        "surface-bright": "#fcf8ff",
+                        "surface-container-high": "#eae6f4",
+                        "on-error": "#ffffff",
+                        "tertiary": "#7e3000",
+                        "tertiary-fixed": "#ffdbcc",
+                        "inverse-surface": "#302f39",
+                        "outline-variant": "#c7c4d8",
+                        "secondary-fixed": "#d5e3fc",
+                        "tertiary-fixed-dim": "#ffb695",
+                        "surface-dim": "#dcd8e5",
+                        "on-tertiary-container": "#ffd2be",
+                        "on-surface": "#1b1b24",
+                        "on-background": "#1b1b24",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#a44100",
+                        "secondary": "#515f74",
+                        "on-tertiary-fixed-variant": "#7b2f00",
+                        "on-tertiary-fixed": "#351000",
+                        "background": "#fcf8ff",
+                        "surface-container-low": "#f5f2ff",
+                        "on-surface-variant": "#464555"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "40px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "3xl": "64px",
+                        "xl": "32px",
+                        "max-width": "1280px",
+                        "xs": "4px",
+                        "gutter": "24px",
+                        "2xl": "48px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg-mobile": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            background-color: #d5e3fc; /* secondary-container */
+            color: #0d1c2e; /* on-secondary-fixed */
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="bg-surface shadow-sm sticky top-0 z-50 h-20 flex items-center">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-max-width mx-auto">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary text-headline-md">functions</span>
+<span class="text-headline-md font-headline-md font-bold text-primary">MathBridge</span>
+</div>
+<nav class="hidden md:flex items-center gap-xl">
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="#">Home</a>
+<a class="text-primary font-label-md border-b-2 border-primary pb-1" href="#">Workspace</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="#">Dashboard</a>
+</nav>
+<button class="bg-primary text-on-primary px-lg py-sm rounded-full font-label-md hover:opacity-90 transition-opacity">
+                Launch App
+            </button>
+</div>
+</header>
+<div class="flex max-w-max-width mx-auto min-h-[calc(100vh-80px)]">
+<!-- NavigationDrawer (Desktop Only) -->
+<aside class="hidden md:flex flex-col py-lg w-72 bg-surface-container-low border-r border-outline-variant/20 sticky top-20 h-[calc(100vh-80px)]">
+<div class="px-md mb-lg">
+<span class="font-headline-md text-headline-md font-bold text-primary px-2">MathBridge</span>
+</div>
+<div class="space-y-1">
+<a class="flex items-center gap-md py-3 px-6 mx-2 text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors font-label-md" href="#">
+<span class="material-symbols-outlined">home</span> Home
+                </a>
+<a class="flex items-center gap-md py-3 px-6 mx-2 bg-secondary-container text-on-secondary-container rounded-full scale-[0.98] transition-transform font-label-md" href="#">
+<span class="material-symbols-outlined">edit_square</span> Workspace
+                </a>
+<a class="flex items-center gap-md py-3 px-6 mx-2 text-on-surface-variant hover:bg-surface-variant rounded-full transition-colors font-label-md" href="#">
+<span class="material-symbols-outlined">leaderboard</span> Dashboard
+                </a>
+</div>
+<div class="mt-auto px-6 py-4">
+<div class="bg-surface-container-highest p-md rounded-2xl border border-outline-variant">
+<p class="text-label-sm text-primary mb-1 uppercase tracking-wider">Current Streak</p>
+<p class="text-headline-md font-bold text-on-surface">12 Days 🔥</p>
+</div>
+</div>
+</aside>
+<!-- Main Workspace Canvas -->
+<main class="flex-1 w-full bg-surface-container-lowest p-md md:p-xl overflow-y-auto">
+<div class="max-w-4xl mx-auto space-y-xl">
+<!-- Controls Panel -->
+<section class="bg-white p-lg md:p-xl rounded-2xl border border-outline-variant/30 shadow-sm">
+<div class="mb-lg">
+<h1 class="text-headline-md font-headline-md text-on-surface">Bridge Your Interests</h1>
+<p class="text-body-md text-on-surface-variant">Customize your learning session to see how math applies to what you love.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Topic Selector -->
+<div class="flex flex-col gap-sm">
+<label class="text-label-md font-label-md text-on-surface-variant">Mathematics Topic</label>
+<div class="relative">
+<select class="w-full h-12 pl-4 pr-10 rounded-lg bg-surface-container-low border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary appearance-none text-body-md">
+<option>Algebra: Linear Equations</option>
+<option>Trigonometry: Unit Circle</option>
+<option>Calculus: Derivatives</option>
+<option>Statistics: Probability</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-outline-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Passion Input -->
+<div class="flex flex-col gap-sm">
+<label class="text-label-md font-label-md text-on-surface-variant">Your Passion</label>
+<div class="relative">
+<input class="w-full h-12 pl-10 pr-4 rounded-lg bg-surface-container-low border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary text-body-md" placeholder="e.g., Gaming, Baking, Space" type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-3 text-outline-variant">favorite</span>
+</div>
+</div>
+<!-- Grade Toggle -->
+<div class="flex flex-col gap-sm">
+<label class="text-label-md font-label-md text-on-surface-variant">Level</label>
+<div class="flex p-1 bg-surface-container-low rounded-lg border border-outline-variant h-12">
+<button class="flex-1 rounded-md text-label-sm transition-all active-tab" onclick="toggleGrade(this)">Middle</button>
+<button class="flex-1 rounded-md text-label-sm transition-all hover:bg-surface-variant" onclick="toggleGrade(this)">High</button>
+<button class="flex-1 rounded-md text-label-sm transition-all hover:bg-surface-variant" onclick="toggleGrade(this)">College</button>
+</div>
+</div>
+</div>
+<div class="mt-lg flex justify-end">
+<button class="bg-primary-container text-on-primary-container hover:opacity-90 px-xl py-md rounded-full font-label-md flex items-center gap-sm transition-all shadow-md active:scale-[0.98]">
+<span class="material-symbols-outlined">auto_awesome</span>
+                            Generate Experience
+                        </button>
+</div>
+</section>
+<!-- AI Results Dashboard -->
+<section class="space-y-md">
+<!-- Tab Navigation -->
+<div class="flex gap-md overflow-x-auto scrollbar-hide pb-2">
+<button class="flex-shrink-0 px-lg py-md rounded-xl bg-secondary-container text-on-secondary-container font-label-md flex items-center gap-sm transition-all" id="tab-story" onclick="switchTab('story')">
+<span class="material-symbols-outlined">auto_stories</span> The Story
+                        </button>
+<button class="flex-shrink-0 px-lg py-md rounded-xl bg-surface hover:bg-surface-variant text-on-surface-variant font-label-md flex items-center gap-sm transition-all border border-outline-variant/30" id="tab-problem" onclick="switchTab('problem')">
+<span class="material-symbols-outlined">calculate</span> Interactive Problem
+                        </button>
+<button class="flex-shrink-0 px-lg py-md rounded-xl bg-surface hover:bg-surface-variant text-on-surface-variant font-label-md flex items-center gap-sm transition-all border border-outline-variant/30" id="tab-explanation" onclick="switchTab('explanation')">
+<span class="material-symbols-outlined">lightbulb</span> Visual Explanation
+                        </button>
+</div>
+<!-- Content Cards (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg animate-in fade-in duration-500" id="result-content">
+<!-- Main Story Card -->
+<div class="md:col-span-8 bg-white rounded-2xl border border-outline-variant/30 overflow-hidden shadow-sm flex flex-col">
+<div class="h-64 relative">
+<img class="w-full h-full object-cover" data-alt="A cinematic, high-quality photograph of a cozy bakery kitchen at dawn. Flour is dusted across a wooden table where several golden-brown sourdough loaves rest. Warm, amber sunlight streams through a window, catching floating dust motes and highlighting the intricate textures of the bread. The aesthetic is clean, modern, and professional, dominated by soft creams, warm wood tones, and the deep indigo accents of a kitchen towel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX2ka7aKEYTMtz0Jcm-LiQnq5I1Vd0MZwcScQk_CJFXFgVT5AjPj0u77Jn7jB9ucMC4XGsZqeMily8J9FwYfg2QStGrpTRryYgJBKWpjPRNqF7reI4eHrEyMH2P1K7Y0rqSR-09g-3rmk-1g7nQvNeSH0orJSQXTHIp9z79HScQ71cEPXGn8LsL60hJ7cd8A8TCJ8o0CVQM8mWTCBedA03SxnE4CEEBzjG-JQI76jb7zhirXZ3JaCiUFU7oMiWnZfKFfivd8IERfQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-lg">
+<h3 class="text-white font-headline-md">The Bakery Equation</h3>
+</div>
+</div>
+<div class="p-lg md:p-xl space-y-md">
+<p class="text-body-lg text-on-surface leading-relaxed">
+                                    You are the head pastry chef at "The Infinite Rise." To perfect your signature sourdough, you've discovered that the relationship between ambient temperature ($T$) and fermentation time ($h$) follows a linear path. 
+                                </p>
+<div class="p-md bg-surface-container rounded-xl border-l-4 border-primary italic text-body-md text-on-surface-variant">
+                                    "When the kitchen is at 70°F, your bread takes 12 hours. For every degree the temperature rises, the time decreases by exactly 15 minutes."
+                                </div>
+<p class="text-body-md text-on-surface-variant">
+                                    This isn't just baking—it's a linear function where the crumb structure and flavor profile are directly dictated by the slope of your environment.
+                                </p>
+</div>
+</div>
+<!-- Sidebar Quick Stats -->
+<div class="md:col-span-4 space-y-lg">
+<div class="bg-primary-container/10 p-lg rounded-2xl border border-primary-container/20">
+<h4 class="text-label-md font-bold text-primary uppercase tracking-wider mb-md">Key Concept</h4>
+<p class="text-headline-md font-headline-md text-primary-container mb-sm">Linear Decay</p>
+<p class="text-body-md text-on-surface-variant">Understanding how independent variables (Temp) inversely affect dependent variables (Time).</p>
+</div>
+<div class="bg-white p-lg rounded-2xl border border-outline-variant/30 shadow-sm">
+<h4 class="text-label-md font-bold text-on-secondary-container uppercase mb-md">Real-World Bridge</h4>
+<div class="flex items-center gap-md mb-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">timer</span>
+</div>
+<span class="text-body-md font-medium">Process Optimization</span>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">trending_down</span>
+</div>
+<span class="text-body-md font-medium">Negative Correlation</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-low border-t border-outline-variant/20 mt-auto">
+<div class="w-full py-2xl px-margin-desktop max-w-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-lg">
+<div class="flex flex-col gap-sm">
+<span class="font-headline-md text-headline-md font-bold text-primary">MathBridge</span>
+<p class="text-label-sm text-on-surface-variant">© 2024 MathBridge. All rights reserved.</p>
+</div>
+<nav class="flex flex-wrap justify-center gap-lg">
+<a class="text-on-secondary-container font-label-sm hover:underline decoration-primary transition-all" href="#">Teacher Resources</a>
+<a class="text-on-secondary-container font-label-sm hover:underline decoration-primary transition-all" href="#">Project Info</a>
+<a class="text-on-secondary-container font-label-sm hover:underline decoration-primary transition-all" href="#">Privacy Policy</a>
+<a class="text-on-secondary-container font-label-sm hover:underline decoration-primary transition-all" href="#">Contact</a>
+</nav>
+</div>
+</footer>
+<!-- Ask Assistant FAB Widget -->
+<div class="fixed bottom-8 right-8 z-[60] flex flex-col items-end gap-md">
+<div class="hidden w-80 bg-white rounded-2xl shadow-2xl border border-outline-variant overflow-hidden mb-2 transform origin-bottom-right transition-all duration-300 scale-95 opacity-0" id="ai-chat-bubble">
+<div class="bg-primary p-md text-white flex justify-between items-center">
+<span class="font-label-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">smart_toy</span> MathBridge Assistant
+                </span>
+<button class="material-symbols-outlined" onclick="toggleChat()">close</button>
+</div>
+<div class="h-64 p-md overflow-y-auto space-y-md bg-surface-container-lowest">
+<div class="flex gap-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-white text-[16px]">smart_toy</span>
+</div>
+<div class="bg-surface-container-high p-sm rounded-xl rounded-tl-none text-body-md text-on-surface-variant">
+                        Hello! Stuck on the bakery problem? Ask me anything about the math involved!
+                    </div>
+</div>
+</div>
+<div class="p-md border-t border-outline-variant flex gap-sm">
+<input class="flex-1 border-none focus:ring-0 bg-transparent text-body-md" placeholder="Type your question..." type="text"/>
+<button class="text-primary material-symbols-outlined">send</button>
+</div>
+</div>
+<button class="w-16 h-16 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all" onclick="toggleChat()">
+<span class="material-symbols-outlined text-[32px]">question_answer</span>
+</button>
+</div>
+<script>
+        function toggleGrade(btn) {
+            const container = btn.parentElement;
+            container.querySelectorAll('button').forEach(b => {
+                b.classList.remove('active-tab', 'bg-secondary-container', 'text-on-secondary-container');
+                b.classList.add('hover:bg-surface-variant', 'text-on-surface-variant');
+            });
+            btn.classList.add('active-tab', 'bg-secondary-container', 'text-on-secondary-container');
+            btn.classList.remove('hover:bg-surface-variant', 'text-on-surface-variant');
+        }
+
+        function switchTab(tabId) {
+            const tabs = ['story', 'problem', 'explanation'];
+            tabs.forEach(t => {
+                const btn = document.getElementById(`tab-${t}`);
+                if (t === tabId) {
+                    btn.classList.remove('bg-surface', 'text-on-surface-variant');
+                    btn.classList.add('bg-secondary-container', 'text-on-secondary-container');
+                } else {
+                    btn.classList.add('bg-surface', 'text-on-surface-variant');
+                    btn.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+                }
+            });
+            
+            // Just a visual switch for the prototype demo
+            const content = document.getElementById('result-content');
+            content.style.opacity = '0';
+            setTimeout(() => {
+                content.style.opacity = '1';
+            }, 300);
+        }
+
+        function toggleChat() {
+            const chat = document.getElementById('ai-chat-bubble');
+            if (chat.classList.contains('hidden')) {
+                chat.classList.remove('hidden');
+                setTimeout(() => {
+                    chat.classList.add('scale-100', 'opacity-100');
+                    chat.classList.remove('scale-95', 'opacity-0');
+                }, 10);
+            } else {
+                chat.classList.add('scale-95', 'opacity-0');
+                chat.classList.remove('scale-100', 'opacity-100');
+                setTimeout(() => chat.classList.add('hidden'), 300);
+            }
+        }
+    </script>
+</body></html>

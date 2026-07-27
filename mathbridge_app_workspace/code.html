@@ -236,11 +236,11 @@
 <div class="h-64 relative">
 <img class="w-full h-full object-cover" data-alt="A cinematic, high-quality photograph of a cozy bakery kitchen at dawn. Flour is dusted across a wooden table where several golden-brown sourdough loaves rest. Warm, amber sunlight streams through a window, catching floating dust motes and highlighting the intricate textures of the bread. The aesthetic is clean, modern, and professional, dominated by soft creams, warm wood tones, and the deep indigo accents of a kitchen towel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX2ka7aKEYTMtz0Jcm-LiQnq5I1Vd0MZwcScQk_CJFXFgVT5AjPj0u77Jn7jB9ucMC4XGsZqeMily8J9FwYfg2QStGrpTRryYgJBKWpjPRNqF7reI4eHrEyMH2P1K7Y0rqSR-09g-3rmk-1g7nQvNeSH0orJSQXTHIp9z79HScQ71cEPXGn8LsL60hJ7cd8A8TCJ8o0CVQM8mWTCBedA03SxnE4CEEBzjG-JQI76jb7zhirXZ3JaCiUFU7oMiWnZfKFfivd8IERfQ"/>
 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-lg">
-<h3 class="text-white font-headline-md">The Bakery Equation</h3>
+<h3 id="stroyTitle" class="text-white font-headline-md">The Bakery Equation</h3>
 </div>
 </div>
 <div class="p-lg md:p-xl space-y-md">
-<p class="text-body-lg text-on-surface leading-relaxed">
+<p id="story Text" class="text-body-lg text-on-surface leading-relaxed">
                                     You are the head pastry chef at "The Infinite Rise." To perfect your signature sourdough, you've discovered that the relationship between ambient temperature ($T$) and fermentation time ($h$) follows a linear path. 
                                 </p>
 <div class="p-md bg-surface-container rounded-xl border-l-4 border-primary italic text-body-md text-on-surface-variant">
@@ -402,32 +402,35 @@ const aiText = data.choices[0].message.content;
     if (storyParagraph) {
       storyParagraph.innerText = aiText;
     } else {
+     const aiText = data.choices[0].message.content;
+    console.log("Generated Problem:", aiText);
+
+    // Dynamic UI Update using ID
+    const storyBox = document.getElementById('storyText');
+    if (storyBox) {
+      storyBox.innerText = aiText;
+    } else {
       alert("✨ AI Result:\n\n" + aiText);
     }
-} catch (error) {
+
+  } catch (error) {
     console.error("Fetch Error:", error);
+    alert("Error generating content: " + error.message);
   }
-}
-    }
-const aiText = data.choices[0].message.content;
-    console.log("Generated Problem:", aiText);
-    alert("✨ AI Result:\n\n" + aiText);
-} catch (error) {
-    console.error("Fetch Error:", error);
-  }
-}
-  // Button Event Listener
-const btn = document.getElementById('generateBtn');
+// Button Event Listener
+const btn = document.getElementById("generateBtn");
 if (btn) {
-  btn.addEventListener('click', async (e) => {
+  btn.addEventListener("click", async (e) => {
     e.preventDefault();
-     const topicInput = document.querySelector('input[placeholder*="topic"]') || document.querySelector('input');
+    
+    const topicInput = document.querySelector('input[placeholder*="Topic"]') || document.querySelectorAll('input')[0];
     const interestInput = document.querySelectorAll('input')[1];
-const topic = topicInput ? topicInput.value : "Algebra";
-    const interest = interestInput ? interestInput.value : "Gaming";
-alert("✨ MathBridge AI Magic Starting...");
+    
+    const topic = topicInput && topicInput.value ? topicInput.value : "Algebra";
+    const interest = interestInput && interestInput.value ? interestInput.value : "Gaming";
+
     await generateMathProblem(topic, interest);
   });
-} 
-</script>       
-</body></html>
+}
+</script>
+        
